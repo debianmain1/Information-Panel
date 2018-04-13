@@ -52,38 +52,41 @@ xftfont  Technical CE:size=10
 color0 white
 color1 EAEAEA
 color2 06FF1C
-color3 0B16FD
+color3 D9DFDA
 color4 0478FF	
 color5 A40810
 
 TEXT
-${voffset 30}
-${color3}CPU PROCESSES${color4}  ${hr 3}
+${voffset 150}
+${color4}CPU PROCESSES ${hr 3}
 ${voffset -10}
-${top name 1} $alignr ${color0}${top cpu 1} % 
-${color4}${top name 2} $alignr ${color0}${top cpu 2} % 
-${color4}${top name 3} $alignr ${color0}${top cpu 3} % 
-${color4}${top name 4} $alignr ${color0}${top cpu 4} % 
-${color4}${top name 5} $alignr ${color0}${top cpu 5} % 
-${voffset -10}
-${color3}RAM PROCESSES${color4}  ${hr 3}
-${voffset -10}
-${color4}${top_mem name 1} $alignr ${color0}${top_mem mem_res 1}
-${color4}${top_mem name 2} $alignr ${color0}${top_mem mem_res 2}
-${color4}${top_mem name 3} $alignr ${color0}${top_mem mem_res 3}
-${color4}${top_mem name 4} $alignr ${color0}${top_mem mem_res 4}
-${color4}${top_mem name 5} $alignr ${color0}${top_mem mem_res 5}
-${voffset -10}
-${color3}RAM USED${color0}${alignr}${mem}${color3}
+${color4}CPU 0${color0}   ${execi 30 sensors|grep 'Core 0'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C ${alignr}${cpu cpu0} %${color5} 
+${cpubar cpu0}
+${voffset -18}${color0}${execbar echo 0}
+${color4}CPU 1${color0}   ${execi 30 sensors|grep 'Core 1'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C ${alignr}${cpu cpu1} %${color5} 
+${cpubar cpu1}
+${voffset -18}${color0}${execbar echo 0}
+${color4}CPU 2${color0}   ${execi 30 sensors|grep 'Core 2'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C ${alignr}${cpu cpu2} %${color5} 
+${cpubar cpu2}
+${voffset -18}${color0}${execbar echo 0}${color2}
+${color4}CPU 3${color0}   ${execi 30 sensors|grep 'Core 3'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C ${alignr}${cpu cpu3} %${color5} 
+${cpubar cpu3}
+${voffset -18}${color0}${execbar echo 0}
+${top name 1} $alignr ${top cpu 1} % 
+${top name 2} $alignr ${top cpu 2} % 
+${top name 3} $alignr ${top cpu 3} % 
+${top name 4} $alignr ${top cpu 4} % 
+${top name 5} $alignr ${top cpu 5} % 
+${voffset -10}${color4}
+${hr 3}
+${color4}RAM ${color0}${alignr}${mem}${color4}
 ${membar}
-${voffset -18}${color3}${execbar echo 0}
-${color4}GPU1:   ${color0}${exec nvidia-settings -t -q [gpu:0]/GPUCoreTemp} °C ${color4}${alignr}GPU2:   ${color0}${exec nvidia-settings -t -q [gpu:1]/GPUCoreTemp} °C
+${voffset -18}${color0}${execbar echo 0}
+${top_mem name 1} $alignr ${top_mem mem_res 1}
+${top_mem name 2} $alignr ${top_mem mem_res 2}
+${top_mem name 3} $alignr ${top_mem mem_res 3}
+${top_mem name 4} $alignr ${top_mem mem_res 4}
+${top_mem name 5} $alignr ${top_mem mem_res 5}
 ${voffset -10}
-${color3}DISCS${color4}  ${hr 3}
-${voffset 5}${goto 80}FREE:${goto 150}TOTAL:${color4}${voffset 5}
-  Home${color0}${goto 80}${fs_free /home}${goto 150}${fs_size /home}
-${color4}  Root${color0}${goto 80}${fs_free /}${goto 150}${fs_size /}
-${color4}  EX2${color0}${goto 80}${fs_free /mnt/EX2}${goto 150}${fs_size /mnt/EX2}
-${color4}  EX2home${color0}${goto 80}${fs_free /mnt/EX2home}${goto 150}${fs_size /mnt/EX2home}
-${color4}  Storage${color0}${goto 80}${fs_free /media/Storage}${goto 150}${fs_size /media/Storage}
+${color4}GPU1:   ${color0}${exec nvidia-settings -t -q [gpu:0]/GPUCoreTemp} °C ${color4}${alignr}GPU2:   ${color0}${exec nvidia-settings -t -q [gpu:1]/GPUCoreTemp} °C
 

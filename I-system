@@ -47,28 +47,26 @@ xftfont  Technical CE:size=10
 color0 white
 color1 EAEAEA
 color2 06FF1C
-color3 0B16FD
+color3 D9DFDA
 color4 0478FF	
 color5 A40810
 
 TEXT
-${color3}SYSTEM${color4}  ${hr 3}${color0}
+${color4}SYSTEM ${hr 3}${color0}
 ${voffset -10}
   OS: ${execi 10800 cat /etc/issue.net}
   Kernel: ${kernel}
   Hostname: ${nodename}
-  ${execi 1000 cat /proc/cpuinfo|grep 'model name'|sed -e 's/model name.*: //'| uniq | cut -c 1-26}
+  Uptime: ${uptime}
   Processes: ${processes} ($running_processes running)
   Updates: ${execi 360 aptitude search "~U" | wc -l | tail}
-${voffset -10}
-${color3}SYSTEM LOAD${color4}  ${hr 3}
-${voffset -10}
-${color4}CPU 0${color0}${goto 55}${execi 60 sensors|grep 'Core 0'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C${goto 105}${exec awk '/cpu MHz/{i++}i==1{printf "%.f",$4; exit}' /proc/cpuinfo} MHz ${alignr}${cpu cpu0} %
-${color4}CPU 1${color0}${goto 55}${execi 60 sensors|grep 'Core 1'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C${goto 105}${exec awk '/cpu MHz/{i++}i==2{printf "%.f",$4; exit}' /proc/cpuinfo} MHz ${alignr}${cpu cpu1} %
-${color4}CPU 2${color0}${goto 55}${execi 60 sensors|grep 'Core 2'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C${goto 105}${exec awk '/cpu MHz/{i++}i==3{printf "%.f",$4; exit}' /proc/cpuinfo} MHz ${alignr}${cpu cpu2} %
-${color4}CPU 3${color0}${goto 55}${execi 60 sensors|grep 'Core 3'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C${goto 105}${exec awk '/cpu MHz/{i++}i==4{printf "%.f",$4; exit}' /proc/cpuinfo} MHz ${alignr}${cpu cpu3} %
-${color4}CPU 4${color0}${goto 55}${execi 60 sensors|grep 'Core 4'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C${goto 105}${exec awk '/cpu MHz/{i++}i==5{printf "%.f",$4; exit}' /proc/cpuinfo} MHz ${alignr}${cpu cpu4} %
-${color4}CPU 5${color0}${goto 55}${execi 60 sensors|grep 'Core 5'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C${goto 105}${exec awk '/cpu MHz/{i++}i==6{printf "%.f",$4; exit}' /proc/cpuinfo} MHz ${alignr}${cpu cpu5} %
 
+${color4}DISCS ${hr 3}${font}
+${voffset 5}${goto 80}FREE:${goto 150}TOTAL:${color1}${voffset 5}
+  Home${goto 80}${fs_free /home}${goto 150}${fs_size /home}
+  Root${goto 80}${fs_free /}${goto 150}${fs_size /}
+  EX2${goto 80}${fs_free /mnt/EX2}${goto 150}${fs_size /mnt/EX2}
+  EX2home${goto 80}${fs_free /mnt/EX2home}${goto 150}${fs_size /mnt/EX2home}
+  Storage${goto 80}${fs_free /media/Storage}${goto 150}${fs_size /media/Storage}
 
 

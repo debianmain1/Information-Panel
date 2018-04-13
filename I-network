@@ -51,7 +51,7 @@ xftfont  Technical CE:size=10
 color0 white
 color1 EAEAEA
 color2 06FF1C
-color3 0B16FD
+color3 D9DFDA
 color4 0478FF	
 color5 A40810
 
@@ -59,19 +59,19 @@ TEXT
 #
 # Change the network interface from bond0 to whatever your system calls it
 # It could be enp2s0, eth0, eth1, ppp0, ppp1, etc.
-${color3}NETWORK${color4}  ${hr 3}
+${color4}NETWORK ${hr 3}
 ${voffset -16}
 ${color2}DOWNLOAD SPEED${color0}${alignr}${downspeedf bond0} KiB/s
-${color2}${downspeedgraph bond0 50,200 06FF1C 06FF1C s}${voffset -8}
+${color0}${downspeedgraph bond0 50,200 06FF1C 06FF1C s}${voffset -8}
 ${color5}UPLOAD SPEED ${color0}${alignr}${upspeedf bond0} KiB/s 
-${color5}${upspeedgraph bond0 50,200 A40810 A40810 s}${color2}${voffset -8} 
+${color0}${upspeedgraph bond0 50,200 A40810 A40810 s}${color2}${voffset -8} 
 # Uncomment these if you would like your IP address to be displayed:
 #${color4}LAN:${color0}${alignr}${font Technical CE:size=7}${addr bond0}${font}
 #${color4}WAN:${color0}${alignr}${font Technical CE:size=7}${execi 60 wget -O - -q icanhazip.com}${color4}${font}
-${color3}OPEN PORTS:${color0}   ${tcp_portmon 1 65535 count}
-${color3}IP:  ${color0}${tcp_portmon 1 65535 rip  0}
+${color4}OPEN PORTS:${color0}   ${tcp_portmon 1 65535 count}
+${color4}IP:  ${color0}${tcp_portmon 1 65535 rip  0}
 ${goto 27}${tcp_portmon 1 65535 rip  1}
 ${goto 27}${tcp_portmon 1 65535 rip  2}
 ${goto 27}${tcp_portmon 1 65535 rip  3}
 ${goto 27}${tcp_portmon 1 65535 rip  4}${color4}
-${voffset -5}${hr 3}
+${voffset -10}${hr 3}
