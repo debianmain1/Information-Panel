@@ -1,0 +1,89 @@
+# **********************************************************************
+# "CPU Panel (8-core)" theme for Conky by Tony George (teejee2008@gmail.com)
+# Modified by autocrosser1
+# Webpage: http://teejeetech.blogspot.in/
+# **********************************************************************
+
+
+background yes
+double_buffer yes
+
+alignment middle_right
+
+border_width 1
+cpu_avg_samples 2
+default_color white
+default_outline_color white
+default_shade_color white
+draw_borders no
+draw_graph_borders yes
+draw_outline no
+draw_shades no
+
+gap_x 0
+gap_y 0
+net_avg_samples 2
+no_buffers yes
+out_to_console no
+out_to_stderr no
+extra_newline no
+
+own_window yes
+own_window_type normal
+own_window_transparent yes
+own_window_colour 000000
+own_window_argb_visual yes
+own_window_argb_value 26
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+minimum_size 200 0
+stippled_borders 0
+update_interval 2.0
+uppercase no
+use_spacer none
+
+show_graph_scale no
+show_graph_range no
+default_bar_size  200 8
+
+use_xft yes
+xftalpha 0.1
+xftfont  Technical CE:size=10
+color0 white
+color1 EAEAEA
+color2 06FF1C
+color3 0B16FD
+color4 0478FF	
+color5 A40810
+
+TEXT
+${voffset 30}
+${color3}CPU PROCESSES${color4}  ${hr 3}
+${voffset -10}
+${top name 1} $alignr ${color0}${top cpu 1} % 
+${color4}${top name 2} $alignr ${color0}${top cpu 2} % 
+${color4}${top name 3} $alignr ${color0}${top cpu 3} % 
+${color4}${top name 4} $alignr ${color0}${top cpu 4} % 
+${color4}${top name 5} $alignr ${color0}${top cpu 5} % 
+${voffset -10}
+${color3}RAM PROCESSES${color4}  ${hr 3}
+${voffset -10}
+${color4}${top_mem name 1} $alignr ${color0}${top_mem mem_res 1}
+${color4}${top_mem name 2} $alignr ${color0}${top_mem mem_res 2}
+${color4}${top_mem name 3} $alignr ${color0}${top_mem mem_res 3}
+${color4}${top_mem name 4} $alignr ${color0}${top_mem mem_res 4}
+${color4}${top_mem name 5} $alignr ${color0}${top_mem mem_res 5}
+${voffset -10}
+${color3}RAM USED${color0}${alignr}${mem}${color3}
+${membar}
+${voffset -18}${color3}${execbar echo 0}
+${color4}GPU1:   ${color0}${exec nvidia-settings -t -q [gpu:0]/GPUCoreTemp} °C ${color4}${alignr}GPU2:   ${color0}${exec nvidia-settings -t -q [gpu:1]/GPUCoreTemp} °C
+${voffset -10}
+${color3}DISCS${color4}  ${hr 3}
+${voffset 5}${goto 80}FREE:${goto 150}TOTAL:${color4}${voffset 5}
+  Home${color0}${goto 80}${fs_free /home}${goto 150}${fs_size /home}
+${color4}  Root${color0}${goto 80}${fs_free /}${goto 150}${fs_size /}
+${color4}  EX2${color0}${goto 80}${fs_free /mnt/EX2}${goto 150}${fs_size /mnt/EX2}
+${color4}  EX2home${color0}${goto 80}${fs_free /mnt/EX2home}${goto 150}${fs_size /mnt/EX2home}
+${color4}  Storage${color0}${goto 80}${fs_free /media/Storage}${goto 150}${fs_size /media/Storage}
+

@@ -1,0 +1,77 @@
+# **********************************************************************
+# "CPU Panel (8-core)" theme for Conky by Tony George (teejee2008@gmail.com)
+# Modified by autocrosser1
+# Webpage: http://teejeetech.blogspot.in/
+# **********************************************************************
+
+
+background yes
+double_buffer yes
+
+alignment bottom_right
+
+border_width 1
+cpu_avg_samples 2
+default_color white
+default_outline_color white
+default_shade_color white
+draw_borders no
+draw_graph_borders yes
+draw_outline no
+draw_shades no
+
+gap_x 0
+gap_y 0
+net_avg_samples 2
+no_buffers yes
+out_to_console no
+out_to_stderr no
+extra_newline no
+
+own_window yes
+own_window_type normal
+own_window_transparent yes
+own_window_colour 000000
+own_window_argb_visual yes
+own_window_argb_value 26
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+minimum_size 200 0
+stippled_borders 0
+update_interval 2.0
+uppercase no
+use_spacer none
+
+show_graph_scale no
+show_graph_range no
+
+use_xft yes
+xftalpha 0.1
+xftfont  Technical CE:size=10
+color0 white
+color1 EAEAEA
+color2 06FF1C
+color3 0B16FD
+color4 0478FF	
+color5 A40810
+
+TEXT
+#
+# Change the network interface from bond0 to whatever your system calls it
+# It could be enp2s0, eth0, eth1, ppp0, ppp1, etc.
+${color3}NETWORK${color4}  ${hr 3}
+${voffset -16}
+${color2}DOWNLOAD SPEED${color0}${alignr}${downspeedf bond0} KiB/s
+${color2}${downspeedgraph bond0 50,200 06FF1C 06FF1C s}${voffset -8}
+${color5}UPLOAD SPEED ${color0}${alignr}${upspeedf bond0} KiB/s 
+${color5}${upspeedgraph bond0 50,200 A40810 A40810 s}${color2}${voffset -8} 
+# Uncomment these if you would like your IP address to be displayed:
+#${color4}LAN:${color0}${alignr}${font Technical CE:size=7}${addr bond0}${font}
+#${color4}WAN:${color0}${alignr}${font Technical CE:size=7}${execi 60 wget -O - -q icanhazip.com}${color4}${font}
+${color3}OPEN PORTS:${color0}   ${tcp_portmon 1 65535 count}
+${color3}IP:  ${color0}${tcp_portmon 1 65535 rip  0}
+${goto 27}${tcp_portmon 1 65535 rip  1}
+${goto 27}${tcp_portmon 1 65535 rip  2}
+${goto 27}${tcp_portmon 1 65535 rip  3}
+${goto 27}${tcp_portmon 1 65535 rip  4}${color4}
+${voffset -5}${hr 3}
